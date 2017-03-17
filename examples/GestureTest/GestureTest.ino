@@ -93,6 +93,11 @@ void loop() {
     handleGesture();
     isr_flag = 0;
     attachInterrupt(0, interruptRoutine, FALLING);
+    if(!digitalRead(APDS9960_INT)){
+      if ( apds.isGestureAvailable() ){
+        apds.readGesture();
+      }
+    }
   }
 }
 
